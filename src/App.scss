@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// To Do List styles
+.TodoList {
+  background-color: lightgrey;
+  font-size: 1.4rem;
+  padding: 2rem;
+  list-style: none;
+  & li {
+    margin: 1rem 0;
+    border: 2px dashed black;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+  &__complete {
+    color:green;
+    font-weight: 900;
+  }
+  &__uncomplete {
+    color:rgb(124, 11, 11);
+    font-weight: 900;
+  }
+  &__green {
+    background: rgb(149, 231, 149);
+  }
+  &__red {
+    background: rgb(241, 162, 162);
+  }
+  &__remove {
+    color: black;
+    font-weight: bold;
+    margin-left: 1rem;
+    transition: all .5s ease-in;
+    margin-left: auto;
+  }
+  &__img {
+    transition: all 0.5s ease;
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+  & button {
+    border: none;
+    padding: 2px;
+    margin: 0 3px;
+    background: none;
+    cursor: pointer;
+  }
+  &__tasks {
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+   
+  }
+}
