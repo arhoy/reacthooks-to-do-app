@@ -34,9 +34,7 @@
 
 // To Do List styles
 .TodoList {
-  background-color: lightgrey;
   font-size: 1.4rem;
-  padding: 2rem;
   list-style: none;
   & li {
     margin: 1rem 0;
@@ -85,5 +83,10 @@
     justify-content: flex-end;
     justify-self: flex-end;
    
+  }
+  &__underline {
+    text-decoration: underline;
+    text-decoration-style: double;
+    font-size: 2rem;
   }
 }

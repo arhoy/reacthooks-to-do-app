@@ -4,10 +4,9 @@ import ToDoContext from '../context';
 
 
 const TodoForm = () => {
-    const { state: { todos, currentTodo = {} }, dispatch } = useContext(ToDoContext);
+    const { state: { currentTodo = {}, todoError }, dispatch } = useContext(ToDoContext);
   
     const [ todo,setTodo ] = useState('');
-    const [ error, setError ] = useState(null)
 
     useEffect( ()=> {
         if(currentTodo.text){
@@ -15,15 +14,13 @@ const TodoForm = () => {
         } else {
             setTodo('')
         }
-    },[currentTodo.id])
+    },[currentTodo.id, currentTodo.text])
 
-    const hasDuplicates = currentTodoText => {
-        todos.forEach(todo => {
-            if(todo.text === currentTodoText) {
-                return true
-            }
-            return false
-        });
+    const inputErrorHandler = msg => {
+        dispatch({
+            type: "TODO_ERROR",
+            payload:msg
+        })
     }
 
     const TodoFormHandler = e => {
@@ -44,7 +41,7 @@ const TodoForm = () => {
             }
         } 
         else {
-            setError('Please enter a non empty task')
+           inputErrorHandler('Please enter a non empty todo task')
         }
 
        
@@ -55,7 +52,6 @@ const TodoForm = () => {
         setTodo(e.target.value);
     }
     
-
 
     return (
         <Fragment>
@@ -71,9 +67,9 @@ const TodoForm = () => {
                 />
 
             </form>
-            {
-                error && <div> { error } </div>
-            }
+
+            { todoError !== '' && <div> { todoError } </div> }
+            
 
         </Fragment>
       

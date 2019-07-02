@@ -7,7 +7,8 @@ const ToDoContext = React.createContext({
         { id: 2, text: 'Work on website', complete: false },
         { id: 3, text: 'Go to sleep', complete: false }
     ],
-    currentTodo: {}
+    currentTodo: {},
+    todoError: ''
 })
 
 export default ToDoContext;

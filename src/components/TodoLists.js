@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import ToDoContext from '../context';
 
 const TodoLists = () => {
@@ -10,12 +10,7 @@ const TodoLists = () => {
             payload: todo
         })
    }
-   
-    if ( todos && todos.length < 1) return (
-        <div>
-            <h1>Yay! You got nothing in the world to do</h1>
-        </div>
-    ) 
+    
 
     const removeTodoHandler = id => {
         dispatch({
@@ -30,9 +25,17 @@ const TodoLists = () => {
             payload:todo
         })
     }
-
+ 
     return (
-        <ul className = "TodoList">
+    <Fragment>
+    <div className = "TodoList__count">
+        {
+            todos && todos.length > 0 ?
+                <h2> You have <span className = "TodoList__underline">{ todos.length }</span> todo tasks left </h2> :
+                <h2> No tasks left to complete... yay!</h2> 
+        }
+    </div>
+     <ul className = "TodoList">
             {
                 todos && todos.map( todo => (
                     <li 
@@ -67,6 +70,9 @@ const TodoLists = () => {
                 ))
             }
         </ul>
+
+    </Fragment>
+       
     )
 }
 
