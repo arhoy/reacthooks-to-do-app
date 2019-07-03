@@ -58,12 +58,13 @@ const TodoForm = () => {
             <form 
                 className = "TodoForm"
                 onSubmit = { TodoFormHandler }
-            >
+            > 
                 <input 
                     value = { todo } 
                     onChange = {TodoInputHandler} 
                     className = "TodoForm__input" 
                     type="text"
+                    placeholder = "Add a todo Task!"
                 />
 
             </form>

@@ -1,7 +1,7 @@
 import React, { useContext, useReducer } from 'react';
 
 
-import './App.scss';
+import './scss/main.scss';
 import ToDoContext from './context';
 import todosReducer from './reducer';
 import TodoLists from './components/TodoLists';

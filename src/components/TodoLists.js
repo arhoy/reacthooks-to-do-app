@@ -31,7 +31,7 @@ const TodoLists = () => {
     <div className = "TodoList__count">
         {
             todos && todos.length > 0 ?
-                <h2> You have <span className = "TodoList__underline">{ todos.length }</span> todo tasks left </h2> :
+                <h2> todo tasks left: <span className = "TodoList__underline">{ todos.length }</span>   </h2> :
                 <h2> No tasks left to complete... yay!</h2> 
         }
     </div>
@@ -43,11 +43,11 @@ const TodoLists = () => {
                         className = {`TodoList ${todo.complete ? 'TodoList__green' : 'TodoList__red' }`}
                         onDoubleClick = { statusChangeHandler.bind(this,todo) }
                     > 
-                        <span className = "TodoList__span" >{todo.text} - </span>
+                        <div className = "TodoList__text"> { todo.text } </div>
                          { 
                              todo.complete ? 
-                             <span className = "TodoList__complete">Completed</span>  : 
-                             <span className = "TodoList__uncomplete">Todo!</span> 
+                             <div className = "TodoList__complete">Completed</div>  : 
+                             <div className = "TodoList__uncomplete">Todo!</div> 
                          }
                          
                          <div className="TodoList__tasks">
@@ -62,7 +62,7 @@ const TodoLists = () => {
                                     className = "TodoList__edit"
                                     onClick = { editTodoHandler.bind(this,todo) }
                                 >
-                                    <img src="https://icon.now.sh/edit" alt="Edit Icon"/>
+                                    <img className = "TodoList__img" src="https://icon.now.sh/edit" alt="Edit Icon"/>
                                 </button>
                          </div>
                        
