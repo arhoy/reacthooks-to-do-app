@@ -1,14 +1,33 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext, Fragment, useEffect } from 'react'
 import ToDoContext from '../context';
 
 const TodoLists = () => {
-   const { state: { todos }, dispatch } =  useContext(ToDoContext);
+    const { state: { todos }, dispatch } =  useContext(ToDoContext);
+
+    useEffect (() => {
+
+         let todoList = localStorage.getItem('todoList');
+         if ( todoList === '' || todoList === null || todoList === undefined ) {
+             // output sample to do list
+             todoList = JSON.stringify(todos);
+           
+         }
+
+        // convert object back to json object.
+         todoList = JSON.parse(todoList);
+        dispatch({
+            type: "SET_TODOS",
+            payload: todoList
+        })
+    },[])
+
+ 
 
    const statusChangeHandler = todo  => {
         dispatch({
             type: "TOGGLE_TODO",
             payload: todo
-        })
+        });
    }
     
 
@@ -25,6 +44,8 @@ const TodoLists = () => {
             payload:todo
         })
     }
+
+
  
     return (
     <Fragment>
